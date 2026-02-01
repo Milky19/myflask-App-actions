@@ -12,7 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
- build:
+
+  build:
     name: Build & Push Image
     runs-on: self-hosted
     needs: checkout
@@ -34,6 +35,3 @@ jobs:
           GIT_SHA=$(git rev-parse --short HEAD)
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/flask-app:$GIT_SHA
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/flask-app:latest
-
-
-
